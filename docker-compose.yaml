@@ -1,0 +1,35 @@
+﻿version: '3.8'
+
+services:
+  database:
+    image: postgres
+    container_name: mvc_learn
+    environment:
+      POSTGRES_DB: Mvc
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  api:
+    build:
+      context: .
+      dockerfile: Web/Dockerfile
+    container_name: mvc_api
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=database;Port=5432;Database=Mvc;Username=postgres;Password=password
+    ports:
+      - "5121:80"
+      - "5122:443"
+
+volumes:
+  database_data:
