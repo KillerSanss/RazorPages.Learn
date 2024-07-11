@@ -1,0 +1,42 @@
+@model Web.Models.Course.CourseGetByIdViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Update Course</title>
+    <link rel="stylesheet" href="~/css/create-and-edit.css" />
+</head>
+<body>
+<p align="left">
+    <button onclick="navigateToIndex('Course')"><img src="~/Assets/Icons/back.svg" alt="Back to List"/>  Back to Courses</button>
+    <button onclick="navigateToDetails('Course', '@Model.Id')"><img src="~/Assets/Icons/details.svg" alt="Back to Details"/>  Back to Details</button>
+</p>
+<h2 align="center">@Model.Name Update</h2>
+<form asp-action="EditConfirmed" method="post">
+    <div>
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name"/>
+    </div>
+    <div>
+        <label>Description</label>
+        <input asp-for="Description"/>
+    </div>
+    <div>
+        <label>StartDate</label>
+        <input asp-for="StartDate" type="date"/>
+    </div>
+    <div>
+        <label>EducatorId</label>
+        <input asp-for="EducatorId"/>
+    </div>
+    <div>
+        <input type="hidden" asp-for="Id"/>
+        <button type="submit"><img src="~/Assets/Icons/accept.svg" alt="Edit"/>  Edit</button>
+    </div>
+</form>
+</body>
+<script src="~/Scripts/navigate-to-index.js"></script>
+<script src="~/Scripts/navigate-to-details.js"></script>
+<script src="~/Scripts/highlight.js"></script>
+</html>

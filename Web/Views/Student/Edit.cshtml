@@ -1,0 +1,54 @@
+@model Web.Models.Student.StudentGetByIdViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Update Student</title>
+    <link rel="stylesheet" href="~/css/create-and-edit.css" />
+</head>
+<body>
+<p align="left">
+    <button onclick="navigateToIndex('Student')"><img src="~/Assets/Icons/back.svg" alt="Back to List"/>  Back to Students</button>
+    <button onclick="navigateToDetails('Student', '@Model.Id')"><img src="~/Assets/Icons/details.svg" alt="Back to Details"/>  Back to Details</button>
+</p>
+<h2 align="center">@Model.FullName.FirstName @Model.FullName.Surname @Model.FullName.Patronymic Update</h2>
+<form asp-action="EditConfirmed" method="post">
+    <div>
+        <label>FirstName</label>
+        <input asp-for="FullName.FirstName"/>
+    </div>
+    <div>
+        <label>Surname</label>
+        <input asp-for="FullName.Surname"/>
+    </div>
+    <div>
+        <label>Patronymic</label>
+        <input asp-for="FullName.Patronymic"/>
+    </div>
+    <div>
+        <label>Gender</label>
+        <input asp-for="Gender"/>
+    </div>
+    <div>
+        <label>BirthDate</label>
+        <input asp-for="BirthDate" type="date"/>
+    </div>
+    <div>
+        <label>Phone</label>
+        <input asp-for="Phone"/>
+    </div>
+    <div>
+        <label>Email</label>
+        <input asp-for="Email"/>
+    </div>
+    <div>
+        <input type="hidden" asp-for="Id"/>
+        <button type="submit"><img src="~/Assets/Icons/accept.svg" alt="Edit"/>  Edit</button>
+    </div>
+</form>
+</body>
+<script src="~/Scripts/navigate-to-index.js"></script>
+<script src="~/Scripts/navigate-to-details.js"></script>
+<script src="~/Scripts/highlight.js"></script>
+</html>

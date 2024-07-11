@@ -1,0 +1,53 @@
+@model Web.Models.Educator.EducatorCreateViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Create Educator</title>
+    <link rel="stylesheet" href="~/css/create-and-edit.css" />
+</head>
+<body>
+<p align="left">
+    <button onclick="navigateToIndex('Educator')"><img src="~/Assets/Icons/back.svg" alt="Back to List"/>  Back to Educators</button>
+</p>
+<h1 align="center">Create Educator</h1>
+<form asp-action="Create" method="post" id="create-educator-form">
+    <div>
+        <label>FirstName</label>
+        <input asp-for="FullName.FirstName"/>
+    </div>
+    <div>
+        <label>Surname</label>
+        <input asp-for="FullName.Surname"/>
+    </div>
+    <div>
+        <label>Patronymic</label>
+        <input asp-for="FullName.Patronymic"/>
+    </div>
+    <div>
+        <label>Gender</label>
+        <input asp-for="Gender"/>
+    </div>
+    <div>
+        <label>BirthDate</label>
+        <input asp-for="BirthDate" type="date"/>
+    </div>
+    <div>
+        <label>Phone</label>
+        <input asp-for="Phone"/>
+    </div>
+    <div>
+        <label>WorkExperience</label>
+        <input asp-for="WorkExperience"/>
+    </div>
+    <div>
+        <button type="submit"><img src="~/Assets/Icons/accept.svg" alt="Create"/>  Create</button>
+    </div>
+</form>
+<p><button type="submit" onclick="clearInputs('create-educator-form')">Clear</button></p>
+</body>
+<script src="~/Scripts/navigate-to-index.js"></script>
+<script src="~/Scripts/clear-inputs.js"></script>
+<script src="~/Scripts/highlight.js"></script>
+</html>

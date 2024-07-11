@@ -1,0 +1,48 @@
+@model IEnumerable<Web.Models.Student.StudentGetAllViewModel>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Students</title>
+    <link rel="stylesheet" href="~/css/index.css" />
+</head>
+<body>
+<h2 align="center">Students</h2>
+<form asp-action="Index" method="get">
+    <p align="right"><input type="text" name="searchString" value="@ViewBag.CurrentFilter" placeholder="Find student..."/></p>
+</form>
+<p align="right">
+    <button onclick="navigateToCreate('Student')"><img src="~/Assets/Icons/create.svg" alt="Create New Student"/>  New Student</button>
+</p>
+<table>
+    <thead>
+    <tr>
+        <th>FirstName</th>
+        <th>Surname</th>
+        <th>Patronymic</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td onclick="navigateToDetails('Student', '@student.Id')">@student.FullName.FirstName</td>
+            <td onclick="navigateToDetails('Student', '@student.Id')">@student.FullName.Surname</td>
+            <td onclick="navigateToDetails('Student', '@student.Id')">@student.FullName.Patronymic</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<div class="pagination">
+    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+    {
+        <a asp-action="Index" asp-route-pageNumber="@i">@i</a>
+    }
+</div>
+</body>
+<script src="~/Scripts/highlight.js"></script>
+<script src="~/Scripts/navigate-to-details.js"></script>
+<script src="~/Scripts/navigate-to-create.js"></script>
+<script src="Scripts/educator-student-realtime-search.js"></script>
+</html>

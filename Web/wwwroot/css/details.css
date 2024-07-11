@@ -1,0 +1,18 @@
+.col-sm-2 {
+    flex: 0 0 30%;
+    max-width: 30%;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 24px;
+}
+.col-sm-10 {
+    font-weight: lighter;
+    font-size: 20px;
+}
+.row {
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+}
